@@ -1,0 +1,9 @@
+sign = '-'
+slash = '/'
+decimal_point = '.'
+exponent_marker = {
+    'D' | 'd' | 'E' | 'e' | 'F' | 'f' | 'L' | 'l' | 'S' | 's'
+}
+
+decimal_digit = ASCII_DIGIT
+digit = decimal_digit // FOR NOW, BUT IT'S a digit in the current input radix. 
