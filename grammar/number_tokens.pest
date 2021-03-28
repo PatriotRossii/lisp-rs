@@ -1,0 +1,33 @@
+// * {A} - Zero or more
+// ? [A] - Zero or one
+// + - One or more
+
+sign = { "-" }
+slash = { "/" }
+decimal_point = { "." }
+exponent_marker = {
+    "D" | "d" | "E" | "e" | "F" | "f" | "L" | "l" | "S" | "s"
+}
+
+decimal_digit = { ASCII_DIGIT }
+digit = { decimal_digit } // FOR NOW, BUT IT'S a digit in the current input radix.
+
+integer = {
+    sign? ~ decimal_digit+ ~ (decimal_point | sign?) ~ digit+
+}
+
+ratio = {
+    sign? ~ (digit*)+ ~ slash ~ (digit*)+
+}
+
+// Digit zero or more time one or more times 
+
+float = {
+    (sign? ~ (decimal_digit*)* ~ decimal_point ~ (decimal_digit*)+ ~ exponent?)
+    |
+    (sign? ~ (decimal_digit*)+ ~ (decimal_point ~ (decimal_digit*)*)? ~ exponent)
+}
+
+exponent = {
+    exponent_marker ~ sign? ~ (digit*)+
+}
